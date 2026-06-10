@@ -8,3 +8,4 @@ Step 4: attach pictures and multiple attachments.
     First, read the image as binary data.
     Attach the image data to MIMEMultipart using MIMEImage, we add the given filename use os.basename.
 Step 5: The last step is to send the email.
+Calculator project
