@@ -6,3 +6,7 @@ def test_divide():
 def test_add():
     from app.calculator import add
     assert add(2, 3) == 5
+
+def test_subtract():
+    from app.calculator import subtract
+    assert subtract(5, 2) == 3
