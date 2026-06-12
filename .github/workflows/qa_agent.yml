@@ -5,6 +5,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   test-agent:
     runs-on: ubuntu-latest
@@ -32,16 +36,32 @@ jobs:
           pytest > failure.log 2>&1
         continue-on-error: true # Keep going even if tests fail so we can run the agent!
         
+      - name: Find Last Successful Commit
+        id: get_base
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Query GitHub API to find the last successful run of this workflow
+          LAST_SUCCESS=$(gh api repos/${{ github.repository }}/actions/runs \
+            -q ".workflow_runs[] | select(.status==\"completed\" and .conclusion==\"success\" and .head_branch==\"${{ github.ref_name }}\") | .head_sha" | head -n 1)
+          
+          # If we find one, use it. Otherwise, fallback to the commit before the push
+          if [ -z "$LAST_SUCCESS" ]; then
+            echo "base_sha=${{ github.event.before }}" >> $GITHUB_OUTPUT
+            echo "No previous successful build found. Falling back to previous commit."
+          else
+            echo "base_sha=$LAST_SUCCESS" >> $GITHUB_OUTPUT
+            echo "Found last successful build at commit $LAST_SUCCESS"
+          fi
+          
       - name: Run QAOps Fault Localizer (ONLY IF TESTS FAILED)
         if: steps.run_tests.outcome == 'failure'
         uses: MurtazaJ2/QAOps/QAOps@working_with_github_action
         with:
-          # Automatically uses the repository where the action is running
           repo: ${{ github.repository }}
           
-          # For a Push event, 'github.event.before' is the last commit, 'github.sha' is the new one
-          # For a PR event, use pull_request.base.sha and pull_request.head.sha
-          base: ${{ github.event.pull_request.base.sha || github.event.before }}
+          # Use the SHA we found in the previous step as the Base!
+          base: ${{ steps.get_base.outputs.base_sha }}
           head: ${{ github.sha }}
           
           log_file: "failure.log"
