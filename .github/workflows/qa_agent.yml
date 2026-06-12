@@ -34,7 +34,7 @@ jobs:
         
       - name: Run QAOps Fault Localizer (ONLY IF TESTS FAILED)
         if: steps.run_tests.outcome == 'failure'
-        uses: MurtazaJ2/QAOps@working_with_github_action
+        uses: MurtazaJ2/QAOps/QAOps@working_with_github_action
         with:
           # Automatically uses the repository where the action is running
           repo: ${{ github.repository }}
