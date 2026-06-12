@@ -45,6 +45,6 @@ jobs:
           head: ${{ github.sha }}
           
           log_file: "failure.log"
+          openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}
         env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
