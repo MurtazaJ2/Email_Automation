@@ -10,3 +10,7 @@ def test_add():
 def test_subtract():
     from app.calculator import subtract
     assert subtract(5, 2) == 3
+
+def test_multiply():
+    from app.calculator import multiply
+    assert multiply(3, 4) == 12
