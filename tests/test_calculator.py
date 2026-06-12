@@ -1,7 +1,7 @@
 from app.calculator import divide
 
 def test_divide():
-    assert divide(10, 2) == 99
+    assert divide(10, 2) == 5
 
 def test_add():
     from app.calculator import add
