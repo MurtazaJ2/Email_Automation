@@ -21,17 +21,6 @@ def test_power():
 
 def test_flaky_service():
     import time
-    # This test will pass for the next 60 seconds, and then fail forever after.
-    # Current time recorded: time.time()
-    # It simulates a flaky service dependency that goes down.
-    current_time = time.time()
-    import os
-    with open("start_time.txt", "a+") as f:
-        f.seek(0)
-        start_time_str = f.read().strip()
-        if not start_time_str:
-            start_time_str = str(current_time)
-            f.write(start_time_str)
-        start_time = float(start_time_str)
-    
-    assert current_time - start_time < 60, "Service unavailable (timeout)"
+    # This simulates a flaky external API that goes down at a specific UNIX timestamp.
+    # It will pass initially, then fail forever after the timestamp.
+    assert time.time() < 1781500509, "503 Service Unavailable: The mock flaky service went down!"
