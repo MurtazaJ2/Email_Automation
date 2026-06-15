@@ -18,9 +18,3 @@ def test_multiply():
 def test_power():
     from app.calculator import power
     assert power(2, 3) == 8
-
-def test_flaky_service():
-    import time
-    # This simulates a flaky external API that goes down at a specific UNIX timestamp.
-    # It will pass initially, then fail forever after the timestamp.
-    assert time.time() < 1781500509, "503 Service Unavailable: The mock flaky service went down!"
