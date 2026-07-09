@@ -1,18 +1,15 @@
 name: Autonomous PR Review & Auto-Fix Agent
- 
+
 on:
   push:
     branches:
-      - test_branch
       - Test_branch
-  pull_request:
-    types: [opened, synchronize, reopened]
- 
+
 permissions:
   contents: write
   pull-requests: write
   statuses: write
- 
+
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -20,18 +17,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
- 
-      - name: Decrypt OpenRouter Token
-        run: |
-          echo "OPENROUTER_KEY=$(echo 'c2stb3ItdjEtNWZjYTNkNDViNzlkMDk5M2Q3NWUwZjE0ZDExM2NlMmRjZjA1YjZjYzAwZTA4YjI2MDdhYWZhMDZjOGM3MzQyNQ==' | base64 -d)" >> $GITHUB_ENV
+          fetch-depth: 0 # Fetch all history so git diff works
 
       - name: Run PR Agent Action
-        # IMPORTANT: Replace the path below with your actual agent repository path
+        # Note: Replace 'softnauticsgithub/Code_maintenance_agent' with your actual username/repository path on GitHub
         uses: softnauticsgithub/Code_maintenance_agent@main
         with:
-          openai-api-key: ${{ env.OPENROUTER_KEY }}
+          openai-api-key: ${{ secrets.GROQ_API_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-model: "openai/gpt-oss-20b:free"
+          github-model: "openai/gpt-4o-mini"
           scan-mode: "last_commit"
-          auto-merge: "false"
+          auto-merge: "false" # Set to "true" to automatically merge passing PRs
