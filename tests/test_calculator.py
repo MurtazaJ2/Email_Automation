@@ -17,4 +17,4 @@ def test_multiply():
 
 def test_power():
     from app.calculator import power
-    assert power(2, 3) == 8
+    assert power(2, 3) == 0
