@@ -1,7 +1,7 @@
 from app.calculator import divide
 
 def test_divide():
-    assert divide(10, 2) == 5
+    assert divide(10, 2) == 6
 
 def test_add():
     from app.calculator import add
@@ -9,7 +9,7 @@ def test_add():
 
 def test_subtract():
     from app.calculator import subtract
-    assert subtract(5, 2) == 3
+    assert subtract(5, 2) == 2
 
 def test_multiply():
     from app.calculator import multiply

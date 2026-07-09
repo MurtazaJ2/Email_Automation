@@ -1,5 +1,5 @@
 def uppercase(text: str) -> str:
     return text.upper()
 
-def lowercase(text: str) -> str:
+def lowercase(text):
     return text.lower()
