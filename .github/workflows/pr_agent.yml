@@ -1,6 +1,10 @@
 name: Autonomous PR Review & Auto-Fix Agent
  
 on:
+  push:
+    branches:
+      - test_branch
+      - Test_branch
   pull_request:
     types: [opened, synchronize, reopened]
  
