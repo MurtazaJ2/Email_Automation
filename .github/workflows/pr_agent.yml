@@ -20,15 +20,11 @@ jobs:
         with:
           fetch-depth: 0
  
-      - name: Decrypt OpenRouter Token
-        run: |
-          echo "OPENROUTER_KEY=$(echo 'c2stb3ItdjEtNWZjYTNkNDViNzlkMDk5M2Q3NWUwZjE0ZDExM2NlMmRjZjA1YjZjYzAwZTA4YjI2MDdhYWZhMDZjOGM3MzQyNQ==' | base64 -d)" >> $GITHUB_ENV
-
       - name: Run PR Agent Action
         uses: softnauticsgithub/Code_maintenance_agent@main
         with:
-          openai-api-key: ${{ env.OPENROUTER_KEY }}
+          openai-api-key: ${{ secrets.GROQ_API_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-model: "openai/gpt-oss-20b:free"
+          github-model: "llama-3.3-70b-versatile"
           scan-mode: "last_commit"
           auto-merge: "false"
