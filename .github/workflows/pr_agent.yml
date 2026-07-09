@@ -1,0 +1,29 @@
+name: Autonomous PR Review & Auto-Fix Agent
+ 
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+ 
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+ 
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+ 
+      - name: Run PR Agent Action
+        # IMPORTANT: Replace the path below with your actual agent repository path
+        uses: softnauticsgithub/Code_maintenance_agent@main
+        with:
+          openai-api-key: ${{ secrets.OPENROUTER_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-model: "openai/gpt-4o-mini"
+          scan-mode: "last_commit"
+          auto-merge: "false"
