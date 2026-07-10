@@ -1,24 +1,66 @@
-unused_var = 23
-import requests
+def divide(a: float, b: float) -> float:
+    """
+    Divide two numbers.
 
-print(1)
-print(2)
-print(3)
-print(4)
-print(5)
+    Args:
+        a (float): The dividend.
+        b (float): The divisor.
 
-
-def divide(a, b):
+    Returns:
+        float: The quotient.
+    """
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero")
     return a / b
 
-def add(a, b):
+def add(a: float, b: float) -> float:
+    """
+    Add two numbers.
+
+    Args:
+        a (float): The first number.
+        b (float): The second number.
+
+    Returns:
+        float: The sum.
+    """
     return a + b
 
-def subtract(a, b):
+def subtract(a: float, b: float) -> float:
+    """
+    Subtract two numbers.
+
+    Args:
+        a (float): The minuend.
+        b (float): The subtrahend.
+
+    Returns:
+        float: The difference.
+    """
     return a - b
 
-def multiply(a, b):
+def multiply(a: float, b: float) -> float:
+    """
+    Multiply two numbers.
+
+    Args:
+        a (float): The first number.
+        b (float): The second number.
+
+    Returns:
+        float: The product.
+    """
     return a * b
 
-def power(a, b):
+def power(a: float, b: float) -> float:
+    """
+    Raise a number to a power.
+
+    Args:
+        a (float): The base.
+        b (float): The exponent.
+
+    Returns:
+        float: The result.
+    """
     return a ** b
