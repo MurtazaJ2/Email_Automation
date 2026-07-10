@@ -1,5 +1,5 @@
 unused_var = 10
-import json
+import math
 
 def divide(a, b):
     return a / b
