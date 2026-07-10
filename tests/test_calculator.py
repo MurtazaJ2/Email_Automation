@@ -1,7 +1,10 @@
 from app.calculator import divide
 
+
+five = 5
+
 def test_divide():
-    assert divide(10, 2) == 5
+    assert divide(10, 2) == five
 
 def test_add():
     from app.calculator import add
