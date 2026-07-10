@@ -1,0 +1,12 @@
+{
+  "github_repo_url": "https://github.com/MurtazaJ2/Email_Automation",
+  "github_token": "ghs_15368_eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRobmQiLCJjdHgiOiJ5WG5vVFVxNjZ5S3kzUXl3YVhhZENzSDBmUXNFUlhKVXQ3VEVQSmZMVUF0Q0gzSV9PWnpiREFBIiwiZXhwIjoxNzgzNjYyNTU2LCJpYXQiOjE3ODM2NTg5NTYsImlzcyI6ImdpdGh1YiIsImp0aSI6Ijc4MWQ5YTdiLWY4YzctNGE1Zi04MzZhLTc4NTk4NTAyYzcyYSIsInZlciI6M30.BdotWNRuWhsj5rFWs1mA1PWtNkuzaBM7ak9kFqzUNwsQR1PYcKnUWlLWMxah_t_LmGwv3qHCEUzyzHO5pd3i-A",
+  "branch_name": "reeya_branch",
+  "commit_id": "ced366b3ab077e39dca891322013cc3fd15003c7",
+  "pr_number": null,
+  "repo_path": ".",
+  "scan_mode": "last_commit",
+  "exclude_dirs": ["venv", ".venv", ".git", "__pycache__", ".pytest_cache", ".ruff_cache", "agent"],
+  "exclude_files": ["conf_file.py"],
+  "auto_merge": false
+}
