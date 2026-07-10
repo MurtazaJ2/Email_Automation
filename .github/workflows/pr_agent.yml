@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - Test_branch
+      - reeya_branch
 
 permissions:
   contents: write
